@@ -94,6 +94,12 @@ The application will be accessible at `http://localhost:8000`.
 - FastAPI
 - Uvicorn
 
+## Install dependencies from requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Ouput
 
 # Fetching Data From Database
