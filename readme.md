@@ -1,52 +1,50 @@
 # Bank System Dockerization
 
-This repository contains a Dockerized application for managing a simplified banking system.
+This repository contains a Dockerized application for a simple banking system API using FastAPI.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
+- [Source Code](#source-code)
+- [Dockerfile](#dockerfile)
 - [Getting Started](#getting-started)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [Docker Operations](#docker-operations)
-  - [Build Docker Image](#build-docker-image)
-  - [Run Docker Container](#run-docker-container)
-  - [Stop Docker Container](#stop-docker-container)
-  - [Remove Docker Container](#remove-docker-container)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+  - [Prerequisites](#prerequisites)
+  - [Building the Docker Image](#building-the-docker-image)
+  - [Running the Docker Container](#running-the-docker-container)
+- [Usage](#usage)
+  - [Accessing the API](#accessing-the-api)
+- [Dependencies](#dependencies)
 
-## Introduction
+## Source Code
 
-This project provides a Dockerized application for managing a simplified banking system, focusing on basic account management functionalities.
+The source code (`main.py`) includes a basic FastAPI application that provides an API endpoint to fetch account details.
 
-## Features
+## Dockerfile
 
-- Manages account IDs, user details, and current balances.
-- Provides endpoints for retrieving account details and adding new accounts.
-- Utilizes a JSON file for storing account data.
+The Dockerfile builds a container for the FastAPI application, exposing port 8000.
 
-## Prerequisites
-
-Before running this application, ensure you have the following installed:
-
-- Docker: [Install Docker](https://docs.docker.com/get-docker/)
-- Python (if running automation scripts): [Install Python](https://www.python.org/downloads/)
+```dockerfile
+FROM python:3.12-slim
+WORKDIR /app
+COPY . /app
+RUN pip install fastapi uvicorn
+EXPOSE 8000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
 
 ## Getting Started
 
-Follow these steps to get the Dockerized application up and running on your local machine.
+Follow these instructions to build and run the Docker containerized application.
 
-### Installation
+### Prerequisites
+
+Ensure you have Docker installed on your local machine. You can install Docker from [here](https://docs.docker.com/get-docker/).
+
+### Building the Docker Image
 
 1. Clone the repository:
 
    ```bash
-   git clone 
+   git clone https://github.com/Pranjeban/Bank-System-Dockerization.git
    cd bank_system_dockerization
    ```
 
@@ -56,79 +54,41 @@ Follow these steps to get the Dockerized application up and running on your loca
    docker build -t bank_system_image .
    ```
 
-### Usage
+### Running the Docker Container
 
-1. Run the Docker container:
-
-   ```bash
-   docker run -itd --name bank_system_container -p 8000:8000 bank_system_image
-   ```
-
-   Replace `8000` with the desired port if your application uses a different port.
-
-2. Access the application in your web browser at `http://localhost:8000`.
-
-## Docker Operations
-
-### Build Docker Image
-
-To build the Docker image manually:
-
-```bash
-docker build -t bank_system_image .
-```
-
-### Run Docker Container
-
-To run the Docker container:
+Run the Docker container:
 
 ```bash
 docker run -itd --name bank_system_container -p 8000:8000 bank_system_image
 ```
 
-### Stop Docker Container
+The application will be accessible at `http://localhost:8000`.
 
-To stop the running Docker container:
+## Usage
 
-```bash
-docker stop bank_system_container
-```
+### Accessing the API
 
-### Remove Docker Container
+- **Root Endpoint:**
 
-To remove the Docker container (after stopping it):
+  ```http
+  GET /
+  ```
 
-```bash
-docker rm bank_system_container
-```
+  Response:
+  ```json
+  {"message": "Welcome to the Bank System API"}
+  ```
 
-## Configuration
+- **Account Endpoint:**
 
-Describe any configuration options or environment variables used by the application.
+  ```http
+  GET /accounts/{account_id}
+  ```
 
-## Troubleshooting
+  Replace `{account_id}` with a valid integer account ID to fetch account details.
 
-Provide troubleshooting tips and common issues faced by users.
+## Dependencies
 
-## Contributing
-
-Guidelines if you want others to contribute to your codebase.
-
-## License
-
-Specify the project license and link to the license file if applicable.
-```
-
-### Explanation:
-
-- **Introduction**: Briefly describes the purpose of the application (`Bank System Dockerization`) and its focus on managing a simplified banking system.
-- **Features**: Highlights the main functionalities of the application, such as managing account details and utilizing a JSON file for data storage.
-- **Prerequisites**: Lists the necessary software (`Docker` and optionally `Python`) required to run the application.
-- **Getting Started**: Provides steps to clone, build, and run the Docker containerized application.
-- **Docker Operations**: Outlines commands for building, running, stopping, and removing Docker containers.
-- **Configuration**: Placeholder section to describe any configuration options or environment variables.
-- **Troubleshooting**: Placeholder section to provide troubleshooting tips.
-- **Contributing**: Placeholder section for guidelines on contributing to the project.
-- **License**: Placeholder section to specify the project's license.
-
-Customize the sections and instructions based on your specific banking system application and Docker setup. This README template aims to provide a structured and informative guide to help users understand and use your Dockerized banking system application effectively.
+- Python 3.10 or higher
+- FastAPI
+- Uvicorn
