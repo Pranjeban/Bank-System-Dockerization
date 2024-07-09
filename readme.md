@@ -13,6 +13,7 @@ This repository contains a Dockerized application for a simple banking system AP
 - [Usage](#usage)
   - [Accessing the API](#accessing-the-api)
 - [Dependencies](#dependencies)
+- [Ouput](#output)
 
 ## Source Code
 
@@ -92,3 +93,11 @@ The application will be accessible at `http://localhost:8000`.
 - Python 3.10 or higher
 - FastAPI
 - Uvicorn
+
+## Ouput
+
+# Fetching Data From Database
+![Alt-text](./output_images/Screenshot%20from%202024-07-09%2021-24-27.png)
+
+# Inserting Data To the Database 
+![Alt-text](./output_images/Screenshot%20from%202024-07-09%2021-25-02.png)
