@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <h1>Banking System</h1>
+    <div>
+        <h2>Add User</h2>
+        <form id="add-user-form">
+            <label for="account_id">Account ID:</label>
+            <input type="number" id="account_id" name="account_id" required><br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="current_balance">Current Balance:</label>
+            <input type="number" step="0.01" id="current_balance" name="current_balance" required><br>
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+    <div>
+        <h2>Get User</h2>
+        <form id="get-user-form">
+            <label for="search_account_id">Account ID:</label>
+            <input type="number" id="search_account_id" name="search_account_id" required><br>
+            <button type="submit">Get User</button>
+        </form>
+        <div id="user-details"></div>
+    </div>
+</body>
+</html>
