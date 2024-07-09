@@ -18,7 +18,7 @@ class User(BaseModel):
     name: str
     current_balance: float
 
-@app.post("/add_user/")
+@app.post("/add_user")
 async def add_user(user: User):
     with open(json_file_path, "r+") as file:
         users = json.load(file)
