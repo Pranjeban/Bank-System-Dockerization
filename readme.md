@@ -93,6 +93,27 @@ The application will be accessible at `http://localhost:8000`.
   {"message": "Welcome to the Bank System API"}
   ```
 
+- **Add User Endpoint:**
+
+    ```
+    POST /add_user
+    ```
+    Request Body:
+
+  ```json
+  {
+      "account_id": 1,
+      "name": "John Doe",
+      "current_balance": 1000.0
+  }
+  ```
+
+    Response:
+
+    ```json
+    {"message": "User added successfully"}
+    ```
+
 - **Account Endpoint:**
 
   ```http
